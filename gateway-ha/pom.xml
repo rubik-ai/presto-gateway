@@ -100,6 +100,19 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.17</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
+
+        <!-- Presto SQL Parser -->
+        <dependency>
+            <groupId>io.prestosql</groupId>
+            <artifactId>presto-parser</artifactId>
+            <version>340</version>
+        </dependency>
+
         <!-- Test deps -->
         <dependency>
             <groupId>org.testng</groupId>

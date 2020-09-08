@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -108,5 +109,13 @@ public class MultiReadHttpServletRequest extends HttpServletRequestWrapper {
   @Override
   public BufferedReader getReader() throws IOException {
     return new BufferedReader(new InputStreamReader(this.getInputStream()));
+  }
+
+  /**
+   * Get request body as String.
+   * @return
+   */
+  public String getContentAsString() {
+    return (null != content) ? new String(content, StandardCharsets.UTF_8) : "";
   }
 }

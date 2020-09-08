@@ -87,10 +87,12 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
   }
 
   public boolean isAuthEnabled() {
-    return false;
+    return true;
   }
 
   public boolean handleAuthRequest(HttpServletRequest request) {
+    MultiReadHttpServletRequest r = (MultiReadHttpServletRequest)request;
+    log.info("handleAuthRequest() request body={}", r.getContentAsString());
     return true;
   }
 
@@ -118,6 +120,7 @@ public class QueryIdCachingProxyHandler extends ProxyHandler {
       // set target backend so that we could save queryId to backend mapping later.
       ((MultiReadHttpServletRequest) request).addHeader(PROXY_TARGET_HEADER, backendAddress);
     }
+    // if (isAuthEnabled()) {
     if (isAuthEnabled() && request.getHeader("Authorization") != null) {
       if (!handleAuthRequest(request)) {
         // This implies the AuthRequest was not authenticated, hence we error out from here.

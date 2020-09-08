@@ -3,11 +3,17 @@ requestRouter:
   name: prestoRouter
   historySize: 1000
 
+#dataStore:
+#  jdbcUrl: jdbc:mysql://127.0.0.1:3306/prestogateway
+#  user: root
+#  password: root123
+#  driver: com.mysql.cj.jdbc.Driver
+
 dataStore:
-  jdbcUrl: jdbc:mysql://127.0.0.1:3306/prestogateway
-  user: root
-  password: root123
-  driver: com.mysql.cj.jdbc.Driver
+  jdbcUrl: jdbc:postgresql://127.0.0.1:15432/prestogateway
+  user: postgres
+  password: postgres
+  driver: org.postgresql.Driver
 
 server:
   applicationConnectors:
